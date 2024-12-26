@@ -1,0 +1,72 @@
+[
+    {
+        "type": "Dog",
+        "trait": "playful",
+        "name": "Buddy"
+    },
+    {
+        "type": "Cat",
+        "trait": "independent",
+        "name": "Whiskers"
+    },
+    {
+        "type": "Dog",
+        "trait": "loyal",
+        "name": "Max"
+    },
+    {
+        "type": "Cat",
+        "trait": "curious",
+        "name": "Luna"
+    },
+    {
+        "type": "Bird",
+        "trait": "talkative",
+        "name": "Tweety"
+    },
+    {
+        "type": "Dog",
+        "trait": "energetic",
+        "name": "Bella"
+    },
+    {
+        "type": "Cat",
+        "trait": "lazy",
+        "name": "Garfield"
+    },
+    {
+        "type": "Rabbit",
+        "trait": "gentle",
+        "name": "Thumper"
+    },
+    {
+        "type": "Dog",
+        "trait": "brave",
+        "name": "Rocky"
+    },
+    {
+        "type": "Cat",
+        "trait": "affectionate",
+        "name": "Daisy"
+    },
+    {
+        "type": "Dog",
+        "trait": "smart",
+        "name": "Charlie"
+    },
+    {
+        "type": "Cat",
+        "trait": "calm",
+        "name": "Mittens"
+    },
+    {
+        "type": "Bird",
+        "trait": "colorful",
+        "name": "Rio"
+    },
+    {
+        "type": "Rabbit",
+        "trait": "quiet",
+        "name": "Snowball"
+    }
+]

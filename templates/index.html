@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Name Suggestion</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    label {
+      font-weight: bold;
+      color: #555;
+    }
+    input, button {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #e9ecef;
+      border-radius: 4px;
+    }
+    .loading {
+      text-align: center;
+      color: #007bff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Pet Name Suggestion</h1>
+    <form id="nameForm">
+      <label for="type">Pet Type:</label>
+      <input type="text" id="type" name="type" placeholder="e.g., Dog" required>
+
+      <label for="trait">Pet Trait:</label>
+      <input type="text" id="trait" name="trait" placeholder="e.g., playful" required>
+
+      <button type="submit">Get Name Suggestion</button>
+    </form>
+
+    <div id="loading" class="loading" style="display: none;">
+      Loading...
+    </div>
+
+    <div class="result" id="result" style="display: none;">
+      <strong>Suggested Name:</strong> <span id="suggestedName"></span>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('nameForm');
+    const resultDiv = document.getElementById('result');
+    const suggestedNameSpan = document.getElementById('suggestedName');
+    const loadingDiv = document.getElementById('loading');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const type = document.getElementById('type').value;
+      const trait = document.getElementById('trait').value;
+
+      loadingDiv.style.display = 'block';
+      resultDiv.style.display = 'none';
+
+      try {
+        const response = await fetch('/suggest', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ type, trait })
+        });
+
+        const data = await response.json();
+
+        loadingDiv.style.display = 'none';
+        suggestedNameSpan.textContent = data.suggested_name;
+        resultDiv.style.display = 'block';
+      } catch (error) {
+        console.error('Error:', error);
+        loadingDiv.style.display = 'none';
+        suggestedNameSpan.textContent = 'Error fetching the name.';
+        resultDiv.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
